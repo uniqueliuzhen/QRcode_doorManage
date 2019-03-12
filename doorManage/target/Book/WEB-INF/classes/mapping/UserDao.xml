@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.UserDao">
+
+	<sql id="select">
+		id,username,type
+	</sql>
+
+	<insert id="save" parameterType="com.entity.User">
+		INSERT INTO user
+		(
+		username,
+		password,
+		type
+		) VALUES (
+		#{username},
+		#{password},
+		2
+		)
+	</insert>
+
+	<select id="queryByParams" parameterType="map" resultType="com.entity.User">
+		SELECT
+		<include refid="select" />
+		FROM user
+		<where>
+			1 = 1
+			<if test="params.username != null and params.username != ''">
+				and username like '%${params.username}%'
+			</if>
+		</where>
+	</select>
+
+	<select id="login" resultType="com.entity.User">
+		SELECT
+		<include refid="select" />
+		from user
+		<where>
+			username = #{username} and password = #{password}
+		</where>
+	</select>
+
+	<select id="queryByUsername" resultType="com.entity.User">
+		SELECT
+		<include refid="select" />
+		from user
+		<where>
+			username = #{username}
+		</where>
+	</select>
+
+</mapper>

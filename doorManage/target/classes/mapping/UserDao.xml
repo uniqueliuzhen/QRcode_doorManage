@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.UserDao">
+
+	<sql id="select">
+		id,username,type
+	</sql>
+
+	<insert id="save" parameterType="com.entity.User">
+		INSERT INTO dm_user
+		(
+		account,
+		username,
+		password,
+		type,
+		status,
+		wechat_id,
+		create_date,
+		update_date
+		) VALUES (
+		#{account},
+		#{username},
+		#{password},
+		2,
+		3,
+		#{wechat_id},
+		SYSDATE(),
+		SYSDATE()
+		)
+	</insert>
+
+	<select id="queryByParams" parameterType="map" resultType="com.entity.User">
+		SELECT
+		<include refid="select" />
+		FROM dm_user
+		<where>
+			1 = 1
+			<if test="params.username != null and params.username != ''">
+				and username like concat('%',${params.username},'%')
+			</if>
+			<if test="params.status != null">
+				and status =  ${params.status}
+			</if>
+		</where>
+	</select>
+
+	<select id="login" resultType="com.entity.User">
+		SELECT
+		<include refid="select" />
+		from dm_user
+		<where>
+			account = #{account} and password = #{password} and status = 2
+		</where>
+	</select>
+
+</mapper>
