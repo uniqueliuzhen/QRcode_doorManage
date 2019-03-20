@@ -1,0 +1,72 @@
+.modal-content .del-bottom {
+    border-top: none;
+}
+
+.modal-content .del-top {
+    border-bottom: none;
+}
+
+.txt_-center thead tr th{
+    text-align: center;
+}
+.txt_-center tbody td {
+    text-align: center;
+}
+.margin-left20 {
+    margin-left: 20px;
+}
+.margin-left10 {
+    margin-left: 10px;
+}
+
+.margin-right50 {
+    margin-right: 50px;
+}
+.margin-bottom20 {
+    margin-bottom: 20px;
+}
+.padding-right5 {
+    padding-right: 5px;
+}
+.form-div {
+    overflow:hidden ;
+}
+.form-div div {
+    width: 50%;
+    float: left;
+    margin: 15px 0;
+}
+.form-div div .form-control {
+    width: 196px;
+}
+.form-div div label {
+    width: 60px;
+}
+.text-width {
+    width: 538px;
+    height: 200px;
+    display: block;
+}
+.image-div {
+    overflow: hidden;
+    text-align: center;
+}
+.image-div div {
+    width: 32.5%;
+    height: 140px;
+    border: 1px solid #CCCCCC;
+    float: left;
+    text-align: center;
+    margin-right: 6px;
+}
+.image-div div:last-child {
+    margin-right: 0px;
+}
+.image-div div img {
+    vertical-align: middle;
+    width: 100%;
+}
+
+.modal-height {
+    height:550px;
+}

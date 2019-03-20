@@ -235,7 +235,7 @@
 		
 	</dependencies>
 	<build>	
-		<finalName>Book</finalName>
+		<finalName>doorManage</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
