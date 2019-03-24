@@ -4,7 +4,7 @@
 <mapper namespace="com.dao.UserDao">
 
 	<sql id="select">
-		id,username,type
+		id,username,type,status,account
 	</sql>
 
 	<insert id="save" parameterType="com.entity.User">

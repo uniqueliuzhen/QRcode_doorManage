@@ -36,8 +36,7 @@
                     <input type="password" class="form-control" id="password" placeholder="密码" required="">
                 </div>
                 <div class="form-group form-inline" >
-		            <button type="button" id="login" class="btn btn-primary m-b" style="margin-right: 25px" >登 录</button>
-		        	<button type="button" id="regist" class="btn btn-primary m-b">注 册</button>
+		            <button type="button" id="login" class="btn btn-primary m-b">登 录</button>
 				</div>
             </form>
         </div>
@@ -65,8 +64,8 @@
                     success: function (result) {
                     	console.log(result)
                     	if(null != result && "" != result && result.success){
-                            $.cookie("user",JSON.stringify(result.data),{expires:1,path:'/'});
-                            window.location.href = "/doorManage/user/main";
+                            $.cookie("user",JSON.stringify(result.data.user),{expires:1,path:'/'});
+                            window.location.href = "/doorManage/user/main"; 
                         }else{
                             alert("登录出错");
                         }
@@ -91,10 +90,6 @@
         $("#login").click(function () {
             login();
         })
-        
-        $("#regist").on("click",function(){
-        	window.location.href = "/doorManage/user/regist";
-        });
         
     </script>
 

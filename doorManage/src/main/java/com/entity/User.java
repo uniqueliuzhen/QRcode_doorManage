@@ -11,9 +11,16 @@ public class User {
 	private Integer type;
 	private Integer status;
 	private String wechatId;
+	private String token;
 	private Date createDate;
 	private Date updateDate;
 	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	public Integer getId() {
 		return id;
 	}

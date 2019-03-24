@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 		Result result = new ResultSupport();
 		User user = userDao.login(account, password);
 		if(null != user && null != user.getId()){
-			result.setModel("entity", user);
+			result.setModel("user", user);
 		}else{
 			result.setError("400", "账号或密码错误");
 		}
@@ -45,6 +45,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Result regist(User user) {
 		Result result = new ResultSupport();
+		user.setStatus(3);
+		user.setType(2);
 		int i = userDao.save(user);
 		if(i != 1){
 			result.setError("400", "注册异常");

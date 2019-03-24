@@ -9,6 +9,7 @@ public class Record {
 	private Integer userId;
 	private Date applyTime;
 	private Integer status;
+	
 	public Integer getId() {
 		return id;
 	}

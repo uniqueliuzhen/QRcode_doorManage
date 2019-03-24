@@ -65,10 +65,10 @@
                             <thead>
                             <tr>
                                 <th width="10% ">序号</th>
-                                <th width="25%">用户名</th>
-                                <th width="15%">性别</th>
+                                <th width="20%">用户名</th>
+                                <th width="15%">账号</th>
                                 <th width="15%">状态</th>
-                                <th width="35%">操作</th>
+                                <th width="25%">操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -113,7 +113,7 @@
                         $.ajax({
                             type: "get",
                             dataType: "json",
-                            url: url + '/user/queryList',
+                            url: url + '/user/queryPage',
                             async:false,
                             data: {
                                 pageNum:pageNum,
@@ -122,20 +122,20 @@
                             },
                             success: function (result) {
                                 if(null != result && "" != result && result.success){
-                                	$.each(result.data.data,function (n,value) {
-                                   	 console.log(value)
+                                	$.each(result.data.pageInfo.list,function (n,value) {
                                         var trs = "";
                                         var stats = "";
                                         var status = "未审核";
-                                        if(value[7] == '1'){
+                                        if(value.status == '2'){
                                             stats = "disabled";
                                             status = "已审核";
                                         }
-                                        trs += '<tr><td>'+value[0]+'</td><td style="word-wrap:break-word;word-break:break-all;" >'+ value[1] +'</td><td>'+value[3]+'</td><td>'+status+'</td><td><button class="btn btn-info" type="button" onclick="auth(&quot;'+value[0]+'&quot;)" style="margin-right: 10px" '+stats+' ><i class="fa fa-paste padding-right5" ></i>审核</button><button class="btn btn-success" type="button" onclick="edit(&quot;'+value[0]+'&quot;)" ><i class="fa fa-edit" ></i>查看</button><button class="btn btn-danger margin-left10" type="button" onclick="del(&quot;'+value[0]+'&quot;)" ><i class="fa fa-eraser" ></i>删除</button></td></tr>'
+                                        trs += '<tr><td>'+value.id+'</td><td style="word-wrap:break-word;word-break:break-all;" >'+ value.username +'</td><td>'+value.account+'</td><td>'+status+'</td><td><button class="btn btn-info" type="button" onclick="auth(&quot;'+value.id+'&quot;)" style="margin-right: 10px" '+stats+' ><i class="fa fa-paste padding-right5" ></i>审核</button><button class="btn btn-success" type="button" onclick="edit(&quot;'+value.id+'&quot;)" ><i class="fa fa-edit" ></i>修改</button><button class="btn btn-danger margin-left10" type="button" onclick="del(&quot;'+value.id+'&quot;)" ><i class="fa fa-eraser" ></i>删除</button></td></tr>'
                                         $("tbody").append(trs);
                                     })
                                     allcount = result.data.rowCount;
                                     pageSize = result.data.size;
+                                    
                                 }else{
                                     alert(result.msg);
                                 }
@@ -152,7 +152,7 @@
              $.ajax({
                  type: "get",
                  dataType: "json",
-                 url: url + '/user/queryList',
+                 url: url + '/user/queryPage',
                  async:false,
                  data: {
                      pageNum:pageNum,
@@ -161,16 +161,15 @@
                  },
                  success: function (result) {
                 	 if(null != result && "" != result && result.success){
-                         $.each(result.data.data,function (n,value) {
-                        	 console.log(value)
+                         $.each(result.data.pageInfo.list,function (n,value) {
                              var trs = "";
                              var stats = "";
                              var status = "未审核";
-                             if(value[7] == '1'){
+                             if(value.status == '2'){
                                  stats = "disabled";
                                  status = "已审核";
                              }
-                             trs += '<tr><td>'+value[0]+'</td><td style="word-wrap:break-word;word-break:break-all;" >'+ value[1] +'</td><td>'+value[3]+'</td><td>'+status+'</td><td><button class="btn btn-info" type="button" onclick="auth(&quot;'+value[0]+'&quot;)" style="margin-right: 10px" '+stats+' ><i class="fa fa-paste padding-right5" ></i>审核</button><button class="btn btn-success" type="button" onclick="edit(&quot;'+value[0]+'&quot;)" ><i class="fa fa-edit" ></i>查看</button><button class="btn btn-danger margin-left10" type="button" onclick="del(&quot;'+value[0]+'&quot;)" ><i class="fa fa-eraser" ></i>删除</button></td></tr>'
+                             trs += '<tr><td>'+value.id+'</td><td style="word-wrap:break-word;word-break:break-all;" >'+ value.username +'</td><td>'+value.account+'</td><td>'+status+'</td><td><button class="btn btn-info" type="button" onclick="auth(&quot;'+value.id+'&quot;)" style="margin-right: 10px" '+stats+' ><i class="fa fa-paste padding-right5" ></i>审核</button><button class="btn btn-success" type="button" onclick="edit(&quot;'+value.id+'&quot;)" ><i class="fa fa-edit" ></i>修改</button><button class="btn btn-danger margin-left10" type="button" onclick="del(&quot;'+value.id+'&quot;)" ><i class="fa fa-eraser" ></i>删除</button></td></tr>'
                              $("tbody").append(trs);
                          })
                          allcount = result.data.rowCount;
@@ -199,7 +198,7 @@
         	$.ajax({
                 type: "post",
                 dataType: "json",
-                url:"/Onlinemusic/user/delete",
+                url:"/doorManage/user/delete",
                 data :{
                 	id:id
                 },
@@ -221,7 +220,7 @@
         	$.ajax({
                 type: "post",
                 dataType: "json",
-                url:"/Onlinemusic/user/auth",
+                url:"/doorManage/user/auth",
                 data :{
                 	id:id
                 },
@@ -240,7 +239,7 @@
         }
 
         function edit(id){
-        	location.href = "/Onlinemusic/user/check?id="+id;
+        	location.href = "/electric/user/user_update?id="+id;
         }
         
     </script>
