@@ -43,5 +43,50 @@ public class RoomServiceImpl implements RoomService{
 		}
 		return result;
 	}
+
+	@Override
+	public Result queryById(Integer id) {
+		Result result = new ResultSupport();
+		Room room = roomDao.queryById(id);
+		result.setModel("entity", room);
+		return result;
+	}
+	
+	@Override
+	public Result update(Room room) {
+		Result result = new ResultSupport();
+		try {
+			int i = roomDao.update(room);
+			if(i != 1){
+				result.setSuccess(false);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public Result queryAll() {
+		Result result = new ResultSupport();
+		List<Room> list = roomDao.queryAll();
+		result.setModel("list", list);
+		return result;
+	}
+
+	@Override
+	public Result delete(Integer id) {
+		Result result = new ResultSupport();
+		try {
+			int i = roomDao.delete(id);
+			if(i != 1){
+				result.setSuccess(false);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 }
+

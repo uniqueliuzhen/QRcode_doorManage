@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.entity.Room;
-import com.entity.User;
 
 public interface RoomDao {
 
@@ -18,4 +17,7 @@ public interface RoomDao {
 	
 	int update(Room room);
 	
+	Room queryById(@Param("id")Integer id);
+	
+	List<Room> queryAll();
 }

@@ -11,4 +11,11 @@ public interface RoomService {
 	
 	Result save(Room room);
 	
+	Result queryById(Integer id);
+	
+	Result update(Room room);
+	
+	Result queryAll();
+	
+	Result delete(Integer id);
 }

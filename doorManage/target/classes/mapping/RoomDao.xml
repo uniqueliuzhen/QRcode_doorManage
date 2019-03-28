@@ -19,9 +19,37 @@
 		<where>
 			1 = 1
 			<if test="params.name != null and params.name != ''">
-				and name like concat('%',#{params.name},'%')
+				and room_name like concat('%',#{params.name},'%')
 			</if>
 		</where>
 	</select>
+	
+	<select id="queryById" resultType="com.entity.Room">
+		SELECT id id,room_name roomName,status status FROM dm_room
+		<where>
+			id = #{id}
+		</where>
+	</select>
+	
+	<update id="update">
+		update dm_room 
+		<set>
+			room_name = #{roomName}
+		</set>
+		<where>
+			id = #{id}
+		</where>
+	</update>
+	
+	<select id="queryAll" resultType="com.entity.Room" >
+		SELECT id id,room_name roomName,status status FROM dm_room
+	</select>
+
+	<delete id="delete">
+		delete from dm_room
+		<where>
+			id = #{id}
+		</where>
+	</delete>
 
 </mapper>

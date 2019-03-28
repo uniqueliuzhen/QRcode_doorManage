@@ -104,33 +104,27 @@
                     callback: function (curr, limit, totalCount) {
                         pageNum = curr;
                         $("tbody").html("");
-                        var material = $("#material").val();
-                        var user = $("#user").val();
-                        var beginTime = $("#beginTime").val();
-                        var endTime = $("#endTime").val();
-                        
+                        var name = $("#name").val();
                         $.ajax({
-                            type: "get",
+                        	type: "get",
                             dataType: "json",
-                            url: url + '/record/queryPage',
+                            url: url + '/room/queryPage',
                             async:false,
                             data: {
-                                pageNum:pageNum,
+                                pageNum:num,
                                 pageSize:pageSize,
-                                user:user,
-                                material:material,
-                                endTime:endTime,
-                                beginTime:beginTime
+                                name:name
                             },
                             success: function (result) {
                                 if(null != result && "" != result && result.success){
-                                	$.each(result.data.data,function (n,value) {
-                                     var trs = "";
-                                	 trs += '<tr><td>'+(n+1)+'</td><td style="word-wrap:break-word;word-break:break-all;" >'+ value.material +'</td><td>'+value.percent+'</td><td>'+value.user+'</td><td>'+value.ftime+'</td></tr>'
+                                	$.each(result.data.pageInfo.list,function (n,value) {
+                                        var trs = "";
+                                        trs += '<tr><td>'+value.id+'</td><td>'+ value.roomName +'</td><td><button class="btn btn-success" type="button" onclick="edit(&quot;'+value.id+'&quot;)" ><i class="fa fa-edit" ></i>修改</button><button class="btn btn-danger margin-left10" type="button" onclick="del(&quot;'+value.id+'&quot;)" ><i class="fa fa-eraser" ></i>删除</button></td></td></tr>'
                                         $("tbody").append(trs);
                                     })
-                                    allcount = result.data.rowCount;
-                                    pageSize = result.data.size;
+                                    allcount = result.data.pageInfo.total;
+                                    pageSize = result.data.pageInfo.pageSize;
+                                    
                                 }else{
                                     alert(result.errorMsg);
                                 }
@@ -158,7 +152,7 @@
                 	 if(null != result && "" != result && result.success){
                          $.each(result.data.pageInfo.list,function (n,value) {
                              var trs = "";
-                        	 trs += '<tr><td>'+value.id+'</td><td>'+ value.roomName +'</td><td><button class="btn btn-success" type="button" onclick="edit(&quot;'+value[0]+'&quot;)" ><i class="fa fa-edit" ></i>查看</button><button class="btn btn-danger margin-left10" type="button" onclick="del(&quot;'+value[0]+'&quot;)" ><i class="fa fa-eraser" ></i>删除</button></td></td></tr>'
+                        	 trs += '<tr><td>'+value.id+'</td><td>'+ value.roomName +'</td><td><button class="btn btn-success" type="button" onclick="edit(&quot;'+value.id+'&quot;)" ><i class="fa fa-edit" ></i>修改</button><button class="btn btn-danger margin-left10" type="button" onclick="del(&quot;'+value.id+'&quot;)" ><i class="fa fa-eraser" ></i>删除</button></td></td></tr>'
                              $("tbody").append(trs);
                          })
                          allcount = result.data.pageInfo.total;
@@ -176,6 +170,37 @@
            search(1);
         });
 
+        $("#add").click(function(){
+            location.href = "/doorManage/room/room_add";
+        })
+        
+        function edit(id){
+            location.href = "/doorManage/room/room_edit?id="+id;
+        }
+        
+        function del(id){
+        	$.ajax({
+                type: "get",
+                dataType: "json",
+                url:"/doorManage/room/delete",
+                async:false,
+                contentType: 'application/json',
+                data: {
+                	id:id
+                },
+                success: function (result){
+                    if(null != result && "" != result && result.success){
+                        toast("删除成功","删除成功","success");
+                    }else{
+                        alert(result.msg);
+                    }
+                },
+                error:function (result) {
+                    toast("删除失败","删除失败","error");
+                }
+            })
+        }
+        
     </script>
 
 </body>
