@@ -2,12 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dao.UserDao">
+	
+	<resultMap type="com.entity.User" id="baseResult">
+		<id property="id" column="id"/>
+    	<result property="account" column="account"/>
+    	<result property="username" column="username"/>
+    	<result property="type" column="type"/>
+    	<result property="status" column="status"/>
+    	<result property="wechatId" column="wechat_id"/>
+	    <collection property="list" ofType="com.entity.Room" column="id" select="com.dao.RecordDao.queryByUserId"></collection>
+	</resultMap>
 
 	<sql id="select">
-		id,username,type,status,account
+		id,username,type,status,account,wechat_id
 	</sql>
 
-	<insert id="save" parameterType="com.entity.User">
+	<insert id="save" parameterType="com.entity.User" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
 		INSERT INTO dm_user
 		(
 		account,
@@ -15,6 +25,7 @@
 		password,
 		type,
 		status,
+		token,
 		wechat_id,
 		create_date,
 		update_date
@@ -24,6 +35,7 @@
 		#{password},
 		2,
 		3,
+		#{token},
 		#{wechat_id},
 		SYSDATE(),
 		SYSDATE()
@@ -51,6 +63,13 @@
 		from dm_user
 		<where>
 			account = #{account} and password = #{password} and status = 2
+		</where>
+	</select>
+	
+	<select id="queryById" resultMap="baseResult" >
+		select <include refid="select"/> from dm_user
+		<where>
+			id = #{id}
 		</where>
 	</select>
 

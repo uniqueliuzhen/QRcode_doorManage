@@ -1,6 +1,7 @@
 package com.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
 
@@ -15,6 +16,14 @@ public class User {
 	private Date createDate;
 	private Date updateDate;
 	
+	private List<Room> list;
+	
+	public List<Room> getList() {
+		return list;
+	}
+	public void setList(List<Room> list) {
+		this.list = list;
+	}
 	public String getToken() {
 		return token;
 	}

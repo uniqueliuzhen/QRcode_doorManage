@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.RecordDao">
+
+	<insert id="save" parameterType="com.entity.Record">
+		INSERT INTO dm_record
+		(
+		room_id,
+		user_id
+		) VALUES (
+		#{roomId},
+		#{userId}
+		)
+	</insert>
+
+	<select id="queryByUserId" resultType="com.entity.Room">
+		SELECT a.id id,b.room_name as roomName FROM dm_record a,dm_room b
+		<where>
+			1 = 1 and a.room_id = b.id and user_id = #{userId}
+		</where>
+	</select>
+
+</mapper>

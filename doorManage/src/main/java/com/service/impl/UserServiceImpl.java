@@ -2,11 +2,15 @@ package com.service.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dao.RecordDao;
 import com.dao.UserDao;
+import com.entity.Record;
+import com.entity.Room;
 import com.entity.User;
 import com.freamwork.Result;
 import com.freamwork.ResultSupport;
@@ -19,8 +23,11 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
-
-	@Override
+    
+    @Autowired
+    private RecordDao recordDao;
+    
+    @Override
 	public Result queryPage(Map<String, Object> params, Integer pageSize,Integer pageNum) {
 		Result result = new ResultSupport();
 		PageHelper.startPage(pageNum, pageSize);
@@ -54,5 +61,27 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
-    
+	@Override
+	public Result save(User user) {
+		Result result = new ResultSupport();
+		user.setStatus(3);
+		user.setType(2);
+		user.setToken(UUID.randomUUID().toString().replace("-", ""));
+		int i = userDao.save(user);
+		if(i == 1){
+			List<Room> list = user.getList();
+			for (Room room : list) {
+				Record record = new Record();
+				record.setRoomId(room.getId());
+				record.setUserId(user.getId());
+				recordDao.save(record);
+			}
+		}else{
+			result.setError("400", "保存异常");
+		}
+		return result;
+	}
+
+	
+	
 }

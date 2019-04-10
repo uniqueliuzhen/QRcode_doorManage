@@ -52,4 +52,10 @@ public class UserController {
 	public String location(@PathVariable String location){
 		return location;
 	}
+    
+    @RequestMapping("/save")
+    @ResponseBody
+	public Result save(@RequestBody User user){
+		return userService.save(user);
+	}
 }
