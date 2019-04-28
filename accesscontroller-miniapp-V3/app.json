@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/manage/manage",
+    "pages/me/me",
+    "pages/me/wxInfo/wxInfo",
+    "pages/me/bindInfo/bindInfo",
+    "pages/me/help/help",
+    "pages/me/adminsettings/adminsettings",
+    "pages/me/audit/audit"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#4078C0",
+    "navigationBarTitleText": "智慧机房管理系统v2.1",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#9A9A9A",
+    "selectedColor": "#4078c0",
+    "backgroundColor": "#F7F7FA",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab/index.png",
+        "selectedIconPath": "images/tab/index@active.png"
+      },
+      {
+        "pagePath": "pages/manage/manage",
+        "text": "管理",
+        "iconPath": "images/tab/explore.png",
+        "selectedIconPath": "images/tab/explore@active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "images/tab/me.png",
+        "selectedIconPath": "images/tab/me@active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

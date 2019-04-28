@@ -1,0 +1,28 @@
+page,
+.page,
+.page__bd{
+    height: 100%;
+}
+.page__bd{
+    padding-bottom: 0;
+}
+.weui-tab__content{
+    padding-top: 10px;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+  color:#4078c0;
+}
+
+.weui-navbar__slider{
+  background-color:#4078c0;
+}
+
+.weui-form-preview{
+  margin-bottom: 25px;
+}
+.weui-cells{
+  background-color: #F8F8F8;
+
+}
+ 

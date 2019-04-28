@@ -1,0 +1,29 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+ 
+
+  <view class="page__bd">
+
+    <view class="weui-cells__title">姓名：</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" value="{{realName}}" bindinput='nameInput' placeholder="请输入您的姓名" />
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">学号（工号）：</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" type='number' bindinput='numberInput' value="{{stuNumber}}" placeholder="请输入您的学号" />
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-btn-area">
+      <button class="btn" type="primary" size="defualt" disabled="{{btnState}}" bindtap='bindinfo'>{{btnInfo}}</button>
+    </view>
+  </view>
+
+</view>

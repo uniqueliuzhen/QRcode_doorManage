@@ -1,0 +1,41 @@
+<view class="page">
+  <view class="page_bd">
+     <navigator url="wxInfo/wxInfo">
+      <view class="item">
+        <image src="{{userInfo.avatarUrl}}" class="avatar" />
+        <text class="flex1">{{userInfo.nickName}}</text>
+        <image src="/images/me/angle-right.png" class="icon-right" />
+      </view>
+    </navigator> 
+
+    <view class="item" bindtap="goBindInfo">
+      <image src="/images/me/edit_blue.png" class="icon" />
+      <text class="flex1">绑定基本信息</text>
+      <image src="/images/me/angle-right.png" class="icon-right" />
+    </view>
+
+    <view class="item" bindtap="goAdminSettings" wx:if="{{isAdmin}}">
+      <image src="/images/me/edit_blue.png" class="icon" />
+      <text class="flex1">管理员设置</text>
+      <image src="/images/me/angle-right.png" class="icon-right" />
+    </view>
+
+    <view class="item" bindtap="goAudit" wx:if="{{isAdmin}}">
+      <image src="/images/me/edit_blue.png" class="icon" />
+      <text class="flex1">审核</text>
+      <image src="/images/me/angle-right.png" class="icon-right" />
+    </view>
+
+    <!-- <view class="item" bindtap="goHelp">
+      <image src="/images/me/cog_blue.png" class="icon" />
+      <text class="flex1">帮助</text>
+      <image src="/images/me/angle-right.png" class="icon-right" />
+    </view>
+
+     <view class="item" bindtap="goHelp">
+      <image src="/images/me/cog_blue.png" class="icon" />
+      <text class="flex1">版权</text>
+      <image src="/images/me/angle-right.png" class="icon-right" />
+    </view> -->
+  </view>
+</view>

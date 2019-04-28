@@ -1,0 +1,147 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <icon type="waiting" size="93"></icon>
+              </view>
+              <view class="weui-cell__bd">
+                <view>提示</view>
+                <view style="font-size: 13px;color: #888888;">正在审核中...</view>
+              </view>
+            </view>
+
+            <block wx:for="{{AuditList}}" wx:key="AuditListId">
+              <view  class="weui-form-preview" wx:if="{{item.isAudit==0}}">
+                <view class="weui-form-preview__hd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">申请资源</view>
+                    <view class="weui-form-preview__value_in-hd">{{item.org.name}}</view>
+                  </view>
+                </view>
+                <view class="weui-form-preview__bd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">申请人</view>
+                    <view class="weui-form-preview__value">{{item.student.realName}}</view>
+                  </view>
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">学号（工号）</view>
+                    <view class="weui-form-preview__value">{{item.student.stuNumber || 'none'}}</view>
+                  </view>
+                   
+                </view>
+                <view class="weui-form-preview__ft">
+                  <view id="{{item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='applyHandler'>操作</view>
+                </view>
+              </view>
+ 
+
+            </block>
+
+            
+          </view>
+        </view>
+
+
+
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <icon type="success" size="93"></icon>
+              </view>
+              <view class="weui-cell__bd">
+                <view>提示</view>
+                <view style="font-size: 13px;color: #888888;">已审核</view>
+              </view>
+            </view>
+
+            <block wx:for="{{AuditList}}" wx:key="AuditListId">
+
+             <view id="{{item.id}}" class="weui-form-preview" wx:if="{{item.isAudit==1}}">
+                <view class="weui-form-preview__hd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">资源</view>
+                    <view class="weui-form-preview__value_in-hd">{{item.org.name}}</view>
+                  </view>
+                </view>
+                <view class="weui-form-preview__bd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">申请人</view>
+                    <view class="weui-form-preview__value">{{item.student.realName}}</view>
+                  </view>
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">学号（工号）</view>
+                    <view class="weui-form-preview__value">{{item.student.stuNumber || 'none'}}</view>
+                  </view>
+                   
+                </view>
+                <view class="weui-form-preview__ft">
+                  <view id="{{item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='applyHandler'>操作</view>
+                </view>
+              </view>
+
+            </block>
+
+          </view>
+        </view>
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <icon type="success" size="93"></icon>
+              </view>
+              <view class="weui-cell__bd">
+                <view>提示</view>
+                <view style="font-size: 13px;color: #888888;">已拒绝</view>
+              </view>
+            </view>
+
+            <block wx:for="{{AuditList}}" wx:key="AuditListId">
+
+              <view id="{{item.id}}" class="weui-form-preview" wx:if="{{item.isAudit==2}}">
+                <view class="weui-form-preview__hd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">申请资源</view>
+                    <view class="weui-form-preview__value_in-hd">{{item.org.name}}</view>
+                  </view>
+                </view>
+                <view class="weui-form-preview__bd">
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">申请人</view>
+                    <view class="weui-form-preview__value">{{item.student.realName}}</view>
+                  </view>
+                  <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">学号（工号）</view>
+                    <view class="weui-form-preview__value">{{item.student.stuNumber || 'none'}}</view>
+                  </view>
+                   
+                </view>
+                <view class="weui-form-preview__ft">
+                 <view id="{{item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='applyHandler'>操作</view>
+                </view>
+              </view>
+
+            </block>
+
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>

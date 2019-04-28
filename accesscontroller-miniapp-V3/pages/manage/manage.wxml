@@ -1,0 +1,113 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <icon type="success" size="93"></icon>
+              </view>
+              <view class="weui-cell__bd">
+                <view>提示</view>
+                <view style="font-size: 13px;color: #888888;">您的可用资源列表</view>
+              </view>
+            </view>
+
+            <block wx:for="{{ResourceList}}" wx:key="ResourceListId">
+
+              <view id="{{item.id}}" class="weui-cell weui-cell_access" wx:if="{{item.audit==1}}">
+                <view class="weui-cell__bd">
+                  <view style="display: inline-block; vertical-align: middle">
+                    {{item.name}}
+                  </view>
+                  <view class="weui-badge" style="margin-left: 5px;">
+                    {{item.contact || 'none'}}
+                  </view>
+                </view>
+                <view class="weui-cell__ft">
+                  <icon type="success_no_circle" size="23"></icon>
+                </view>
+              </view>
+
+            </block>
+          </view>
+        </view>
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <icon type="warn" size="93"></icon>
+              </view>
+              <view class="weui-cell__bd">
+                <view>提示</view>
+                <view style="font-size: 13px;color: #888888;">可申请资源列表，点击申请</view>
+              </view>
+            </view>
+
+            <block wx:for="{{ResourceList}}" wx:key="ResourceListId">
+
+              <view id="{{item.id}}" class="weui-cell weui-cell_access" wx:if="{{item.audit==2}}" bindtap='applyForAResource'>
+                <view class="weui-cell__bd">
+                  <view style="display: inline-block; vertical-align: middle">
+                    {{item.name}}
+                  </view>
+                  <view class="weui-badge" style="margin-left: 5px;">
+                    {{item.contact || 'none'}}
+                  </view>
+                </view>
+                <view class="weui-cell__ft">
+                 <icon type="warn" size="23" color="#F43530"></icon>
+                </view>
+              </view>
+
+            </block>
+          </view>
+        </view>
+
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <icon type="waiting" size="93"></icon>
+              </view>
+              <view class="weui-cell__bd">
+                <view>提示</view>
+                <view style="font-size: 13px;color: #888888;">您的以下资源正在审核中...</view>
+              </view>
+            </view>
+
+            <block wx:for="{{ResourceList}}" wx:key="ResourceListId">
+
+              <view id="{{item.id}}" class="weui-cell weui-cell_access" wx:if="{{item.audit==0}}">
+                <view class="weui-cell__bd">
+                  <view style="display: inline-block; vertical-align: middle">
+                    {{item.name}}
+                  </view>
+                  <view class="weui-badge" style="margin-left: 5px;">
+                    {{item.contact || 'none'}}
+                  </view>
+                </view>
+                <view class="weui-cell__ft">
+                  <icon type="info_circle" size="23"  color="#00BFFF"></icon>
+                </view>
+              </view>
+
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

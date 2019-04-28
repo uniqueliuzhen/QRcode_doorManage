@@ -1,0 +1,27 @@
+.container {
+  height: 100%;
+  background: #F0EFF5;
+  padding: 20rpx
+}
+.line{
+  padding: 20rpx 0rpx;
+}
+.item__title{
+  margin-top: .77em;
+  margin-bottom: .3em;
+  padding-left: 5rpx;
+  padding-right: 15rpx;
+  color: #000;
+  font-size: 14px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 10rpx;
+  background:#fff;
+} 
+.ac_picker{
+  width: 100%
+}

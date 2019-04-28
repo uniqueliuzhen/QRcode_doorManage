@@ -1,0 +1,107 @@
+.page__bd{
+  margin: 20px 0px;
+}
+
+.item__title{
+  margin-top: .77em;
+  margin-bottom: .3em;
+  padding-left: 5rpx;
+  padding-right: 15rpx;
+  color: #000;
+  font-size: 14px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 10rpx;
+  background:#fff;
+}
+.item_btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 10rpx;
+  background:#F0EFF5;
+}
+
+.placeholder{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #EBEBEB;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #cfcfcf;
+}
+.user {
+  flex: 1;
+}
+
+.user_info {
+  padding: 20rpx;
+  padding-bottom: 10rpx;
+  margin-bottom: 15rpx;
+}
+.user_info_left {
+  padding-top: 10rpx;
+  margin-right: 20rpx;  
+  float: left
+}
+.icon-info {
+  width: 38rpx;
+  height: 38rpx;
+  margin-right: 10rpx;
+}
+.user_info_left image {
+  width: 200rpx;
+  height: 200rpx;
+}
+.user_name {
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.user_login {
+  font-size: 28rpx;
+  margin-bottom: 15rpx;
+}
+.user_company {
+  font-size: 28rpx;
+  margin-bottom: 5rpx;
+}
+.user_location {
+  font-size: 28rpx;
+  margin-bottom: 5rpx;
+}
+.user_email {
+  font-size: 28rpx;
+  margin-bottom: 5rpx;
+}
+.user_blog {
+  font-size: 28rpx;
+  margin-bottom: 5rpx;
+}
+.user_created_at {
+  font-size: 28rpx;
+}
+
+
+.user_status {
+  padding: 10rpx 20rpx;
+}
+.user_status_info {
+  padding: 0 50rpx;
+}
+.user_status_info__view {
+  flex: 1;
+  margin-top: 10rpx;
+}
+.user_status_info__view view {
+  font-weight: bold;
+  font-size: 35rpx;
+}
+.user_status_info__view text {
+  font-size: 30rpx;
+}

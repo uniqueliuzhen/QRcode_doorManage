@@ -1,0 +1,24 @@
+<view class="page">
+  <view class="page_bd">
+    <view class="weui-cells__title">选择</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">设备</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker class="ac_picker" bindchange="bindPickerChange" value="{{roomIndex}}" range="{{roomArray}}" range-key="text">
+            <view class="weui-select weui-select_in-select-after">{{roomArray[roomIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-btn-area">
+      <button class="btn" type="primary" size="default" bindtap='bindOpenGuard'>一键开门</button>
+    </view>
+    <view class="weui-btn-area">
+      <button class="btn" type="primary" size="default" bindtap='bindReset'>重置端口</button>
+    </view>
+  </view>
+</view>
