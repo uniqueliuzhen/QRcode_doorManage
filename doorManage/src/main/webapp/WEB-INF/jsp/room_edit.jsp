@@ -53,6 +53,12 @@
                                                 <input class="form-control" type="text" placeholder="请输入名称" id="name" >
                                             </div>
                                         </div>
+                                        <div class="form-group" style="margin-top: 10px" >
+                                            <label for="name" class="col-md-2 control-label" >设备号*</label>
+                                            <div class="col-md-9" >
+                                                <input class="form-control" type="text" placeholder="请输入设备号" id="code" >
+                                            </div>
+                                        </div>
 										<div class="col-md-11">
                                             <div class="form-group" >
                                                 <div class="col-md-5 control-label" style="float:right" >
@@ -89,6 +95,7 @@
                     if(null != result && "" != result && result.success){
                     	console.log(result.data.entity)
 						$("#name").val(result.data.entity.roomName);                        
+                    	$("#code").val(result.data.entity.roomCode);
                     }else{
                         alert(result.msg);
                     }
@@ -103,6 +110,7 @@
         $("#save").click(function(){
             if(!$("#save").hasClass("disabled")){
                 var name = $("#name").val();
+                var code = $("#code").val();
                 $.ajax({
                     type: "post",
                     dataType: "json",
@@ -111,7 +119,8 @@
                     contentType: 'application/json',
                     data: JSON.stringify({
                     	id:id,
-                    	roomName:name
+                    	roomName:name,
+                    	roomCode:code
                     }),
                     success: function (result){
                         if(null != result && "" != result && result.success){

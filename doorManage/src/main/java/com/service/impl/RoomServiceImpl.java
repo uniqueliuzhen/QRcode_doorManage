@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dao.RecordDao;
 import com.dao.RoomDao;
+import com.entity.Record;
 import com.entity.Room;
 import com.freamwork.Result;
 import com.freamwork.ResultSupport;
@@ -19,6 +21,9 @@ public class RoomServiceImpl implements RoomService{
 
 	@Autowired
 	private RoomDao roomDao;
+	
+	@Autowired
+	private RecordDao recordDao;
 	
 	@Override
 	public Result queryPage(Map<String, Object> params, Integer pageSize,Integer pageNum) {
@@ -79,6 +84,20 @@ public class RoomServiceImpl implements RoomService{
 		Result result = new ResultSupport();
 		try {
 			int i = roomDao.delete(id);
+			if(i != 1){
+				result.setSuccess(false);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public Result open(String token, String roomCode) {
+		Result result = new ResultSupport();
+		try {
+			int i = recordDao.open(roomCode, token);
 			if(i != 1){
 				result.setSuccess(false);
 			}

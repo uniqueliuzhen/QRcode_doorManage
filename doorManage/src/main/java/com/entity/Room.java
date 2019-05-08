@@ -4,7 +4,15 @@ public class Room {
 	
 	private Integer id;
 	private String roomName;
+	private String roomCode;
 	private Integer status;
+	
+	public String getRoomCode() {
+		return roomCode;
+	}
+	public void setRoomCode(String roomCode) {
+		this.roomCode = roomCode;
+	}
 	public Integer getId() {
 		return id;
 	}

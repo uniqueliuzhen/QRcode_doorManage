@@ -14,5 +14,7 @@ public interface UserService {
     Result regist(User user);
     
     Result save(User user);
+    
+    Result queryByWechatId(String wechatId);
 }
 

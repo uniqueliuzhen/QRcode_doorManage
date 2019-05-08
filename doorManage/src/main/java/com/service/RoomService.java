@@ -18,4 +18,6 @@ public interface RoomService {
 	Result queryAll();
 	
 	Result delete(Integer id);
+	
+	Result open(String token,String roomCode);
 }

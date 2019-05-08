@@ -20,5 +20,16 @@
 			1 = 1 and a.room_id = b.id and user_id = #{userId}
 		</where>
 	</select>
+	
+	<select id="open" resultType="java.lang.Integer">
+		SELECT count(*) FROM dm_record a,dm_room b,dm_user c
+		<where>
+			1 = 1 
+			and a.room_id = b.id
+			and a.user_id = c.id 
+			and b.room_code = #{roomCode}
+			and c.token = #{token}
+		</where>
+	</select>
 
 </mapper>

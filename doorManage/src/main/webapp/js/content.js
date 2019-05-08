@@ -1,6 +1,6 @@
 // var $parentNode = window.parent.document;
 
-var url = "http://localhost:8081/doorManage";
+var url = "http://localhost:8080/doorManage";
 
 // function $childNode(name) {
 //     return window.frames[name]

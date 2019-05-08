@@ -20,4 +20,5 @@ public interface RoomDao {
 	Room queryById(@Param("id")Integer id);
 	
 	List<Room> queryAll();
+	
 }

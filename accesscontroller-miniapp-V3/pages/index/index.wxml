@@ -1,9 +1,10 @@
 <view class="page">
 
   <view class="weui-footer" style="background-color:#454545">
-     <view style="text-align:center;color:#FFF;padding-bottom:10px">
-     <span style="color:{{tipTextColor}}">{{tipText}}（ {{remainingSeconds}}  s ）</span></view>
-      <canvas  style="margin:0px auto;height:300px;background:#f1f1f1;" canvas-id="mycanvas"/>
+    <view style="text-align:center;color:#FFF;padding-bottom:10px">
+      <span style="color:{{tipTextColor}}">{{tipText}}（ {{remainingSeconds}} s ）</span>
+    </view>
+    <canvas style="margin:0px auto;height:300px;background:#f1f1f1;" canvas-id="mycanvas" />
   </view>
   <view class="page__bd">
     <view class="weui-panel weui-panel_access">

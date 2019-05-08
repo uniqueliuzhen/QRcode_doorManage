@@ -1,28 +1,22 @@
 var utils = require('utils/util.js')
 var wxApi = require('utils/wxApi')
 var genqrcode = require('plugins/genqrcode.js')
+var app=getApp()
 //app.js
 App({
   onLaunch: function () {
-
-
     wx.getUserInfo({
       success: res => {
         // 可以将 res 发送给后台解码出 unionId 
         this.globalData.userInfoForWeChat = res.userInfo
         console.log("【 " + new Date() + " 】加载微信用户信息成功");
-
         this.setSystemInfo();
-     
       }
     })
-
   },
-
   setSystemInfo:function(){
     utils.showLoading();
     var wxLogin = wxApi.wxLogin();
-
     //1.登陆
     wxLogin()
       .then(

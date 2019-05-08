@@ -15,4 +15,5 @@ public interface UserDao {
 	
 	List<User> queryByParams(@Param("params")Map<String,Object> params);
 	
+	User queryByWechatId(@Param("wechatId")String wechatId);
 }

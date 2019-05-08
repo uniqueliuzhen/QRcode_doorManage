@@ -36,7 +36,7 @@
 		2,
 		3,
 		#{token},
-		#{wechat_id},
+		#{_parameter},
 		SYSDATE(),
 		SYSDATE()
 		)
@@ -72,5 +72,14 @@
 			id = #{id}
 		</where>
 	</select>
+	
+	<select id="queryByWechatId" resultMap="baseResult" >
+		select <include refid="select"/> from dm_user
+		<where>
+			wechat_id = #{wechatId}
+		</where>
+	</select>
+	
+	
 
 </mapper>

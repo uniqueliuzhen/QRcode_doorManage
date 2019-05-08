@@ -67,6 +67,7 @@ public class UserServiceImpl implements UserService {
 		user.setStatus(3);
 		user.setType(2);
 		user.setToken(UUID.randomUUID().toString().replace("-", ""));
+		user.setWechatId("or8gM5PmsW5lkFHkvqLhw5hwFxRo");
 		int i = userDao.save(user);
 		if(i == 1){
 			List<Room> list = user.getList();
@@ -82,6 +83,19 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
-	
-	
+	@Override
+	public Result queryByWechatId(String wechatId) {
+		Result result = new ResultSupport();
+		try {
+			User user = userDao.queryByWechatId(wechatId);
+			if(null != user && null != user.getId()){
+				result.setModel("user", user);
+			}else{
+				result.setError("401", "该账号未注册");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
